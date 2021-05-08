@@ -89,7 +89,7 @@ void motorcontrol(){
 void panicSound(){
 	int val = digitalRead(pushButton);
   	if (val == HIGH) {
-      //initiate buzzer alarm with Red LED
+     //initiate buzzer alarm with Red LED
    	 digitalWrite(buzzer, HIGH);
      digitalWrite(ledRed, HIGH);
      digitalWrite(ledGreen, LOW);
