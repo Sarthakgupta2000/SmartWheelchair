@@ -117,7 +117,8 @@ void setup()
   pinMode(buzzer,OUTPUT);
   Serial.begin(9600);
   irrecv.enableIRIn(); 
-  Serial.println("IRin Enabled");       //ir sensor ready to work
+  Serial.println("All pins Enabled");      
+  Serial.println("Welcome !!");
   Serial.println("Select direction ? ");
 }
 
@@ -126,14 +127,16 @@ void loop()
   digitalWrite(ledGreen,HIGH);   //light will stay on for better vision in darker areas
   panicSound();
   int distance1 = 0.01724137 * readUltrasonicDistance(10,10); //left ultrasonic sensor distance in cm
-  int distance2 = 0.0172413 * readUltrasonicDistance(11,11); //right ultrasonic sensor distance in cm
-   if (distance1 <= 40 || distance2 <= 40) {
-    //Rotate right Wheel Chair if distance less than 40cm in either
+  int distance2 = 0.01724137 * readUltrasonicDistance(11,11); //right ultrasonic sensor distance in cm
+   if (distance1 <= 20 || distance2 <= 20) {
+    //Rotate right Wheel Chair if distance less than 20cm in either sensor
     digitalWrite(buzzer, HIGH);
     digitalWrite(ledRed, HIGH);
     digitalWrite(ledGreen, LOW);
     digitalWrite(ledBlue, LOW);
     Serial.println("OBSTACLE ALERT !! STOP.STOP.STOP");
+    Serial.print("Distance 1: ");Serial.println(distance1);
+    Serial.print("Distance 2: ");Serial.println(distance2);
     Serial.println("Rotating right!");
     digitalWrite(motorRightF, LOW);
     digitalWrite(motorRightB, HIGH);
