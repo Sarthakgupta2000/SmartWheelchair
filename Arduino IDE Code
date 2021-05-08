@@ -32,13 +32,13 @@ long readUltrasonicDistance(int triggerPin, int echoPin)
 }
 
 void motorcontrol(){
-	if (irrecv.decode(&results)) {//irrecv.decode(&results) returns true if anything is recieved, and stores info in varible results
+	if (irrecv.decode(&results)) {      //irrecv.decode(&results) returns true if anything is recieved, and stores info in varible results
     unsigned int value = results.value; //Get the value of results as an unsigned int, so we can use switch case
     // Serial.println(value); value coming from remote
     digitalWrite(ledBlue,HIGH); 
     digitalWrite(ledGreen,LOW);
     digitalWrite(ledRed,LOW);
-    delay(200);
+    delay(100);
     switch (value) {
       case 20655: //forward
       	Serial.println("moving forward");
@@ -81,7 +81,7 @@ void motorcontrol(){
       	break;
     }
     Serial.println("Enter next command....");
- 
+ 	delay(200);
     irrecv.resume(); // Receive the next value
   }
 }
